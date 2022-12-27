@@ -1,10 +1,13 @@
 const express = require("express");
+const apicache = require("apicache");
 const memberController = require("../../controllers/memberController");
 
 const router = express.Router();
 
-router.get("/", memberController.getAllMembers);
+let cache = apicache.middleware("60 seconds");
 
-router.get("/:memberId", memberController.getOneMember);
+router.get("/", cache, memberController.getAllMembers);
+
+router.get("/:memberId", cache, memberController.getOneMember);
 
 module.exports = router;
