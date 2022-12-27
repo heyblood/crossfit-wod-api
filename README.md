@@ -1,4 +1,4 @@
-# REST API 设计最佳实践手册 ——— 如何使用 JavaScript、Node.js 和 Express.js 构建 REST API
+# [REST API 设计最佳实践手册——如何使用 JavaScript、Node.js 和 Express.js 构建 REST API](https://www.freecodecamp.org/chinese/news/rest-api-design-best-practices-build-a-rest-api)
 
 - [REST API 最佳实践](https://chinese.freecodecamp.org/news/rest-api-design-best-practices-build-a-rest-api/#rest-api-best-practices)
   - [版本](https://chinese.freecodecamp.org/news/rest-api-design-best-practices-build-a-rest-api/#versioning)
