@@ -5,9 +5,10 @@ const getAllMembers = (req, res) => {
         const allMembers = memberService.getAllMembers();
         res.send({ status: "OK", data: allMembers });
     } catch (error) {
-        res
-            .status(error?.status || 500)
-            .send({ status: "FAILED", data: { error: error?.message || error } });
+        res.status(error?.status || 500).send({
+            status: "FAILED",
+            data: { error: error?.message || error },
+        });
     }
 };
 
@@ -16,20 +17,19 @@ const getOneMember = (req, res) => {
         params: { memberId },
     } = req;
     if (!memberId) {
-        res
-            .status(400)
-            .send({
-                status: "FAILED",
-                data: { error: "Parameter ':memberId' can not be empty" },
-            });
+        res.status(400).send({
+            status: "FAILED",
+            data: { error: "Parameter ':memberId' can not be empty" },
+        });
     }
     try {
         const member = memberService.getOneMember(memberId);
         res.send({ status: "OK", data: member });
     } catch (error) {
-        res
-            .status(error?.status || 500)
-            .send({ status: "FAILED", data: { error: error?.message || error } });
+        res.status(error?.status || 500).send({
+            status: "FAILED",
+            data: { error: error?.message || error },
+        });
     }
 };
 

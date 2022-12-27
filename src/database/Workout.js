@@ -6,7 +6,9 @@ const getAllWorkouts = (filterParams) => {
         let workouts = DB.workouts;
         if (filterParams.mode) {
             return DB.workouts.filter((workout) =>
-                workout.mode.toLowerCase().includes(filterParams.mode.toLowerCase())
+                workout.mode
+                    .toLowerCase()
+                    .includes(filterParams.mode.toLowerCase())
             );
         }
         return workouts;
@@ -26,14 +28,19 @@ const getOneWorkout = (workoutId) => {
         }
         return workout;
     } catch (error) {
-        throw { status: error?.status || 500, message: error?.message || error };
+        throw {
+            status: error?.status || 500,
+            message: error?.message || error,
+        };
     }
 };
 
 const createNewWorkout = (newWorkout) => {
     try {
         const isAlreadyAdded =
-            DB.workouts.findIndex((workout) => workout.name === newWorkout.name) > -1;
+            DB.workouts.findIndex(
+                (workout) => workout.name === newWorkout.name
+            ) > -1;
         if (isAlreadyAdded) {
             throw {
                 status: 400,
@@ -44,14 +51,18 @@ const createNewWorkout = (newWorkout) => {
         saveToDatabase(DB);
         return newWorkout;
     } catch (error) {
-        throw { status: error?.status || 500, message: error?.message || error };
+        throw {
+            status: error?.status || 500,
+            message: error?.message || error,
+        };
     }
 };
 
 const updateOneWorkout = (workoutId, changes) => {
     try {
         const isAlreadyAdded =
-            DB.workouts.findIndex((workout) => workout.name === changes.name) > -1;
+            DB.workouts.findIndex((workout) => workout.name === changes.name) >
+            -1;
         if (isAlreadyAdded) {
             throw {
                 status: 400,
@@ -76,7 +87,10 @@ const updateOneWorkout = (workoutId, changes) => {
         saveToDatabase(DB);
         return updatedWorkout;
     } catch (error) {
-        throw { status: error?.status || 500, message: error?.message || error };
+        throw {
+            status: error?.status || 500,
+            message: error?.message || error,
+        };
     }
 };
 
@@ -94,7 +108,10 @@ const deleteOneWorkout = (workoutId) => {
         DB.workouts.splice(indexForDeletion, 1);
         saveToDatabase(DB);
     } catch (error) {
-        throw { status: error?.status || 500, message: error?.message || error };
+        throw {
+            status: error?.status || 500,
+            message: error?.message || error,
+        };
     }
 };
 
